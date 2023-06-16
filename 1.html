@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timer</title>
+  <style>
+    body{
+       height: 100%;
+       background-color: #fdf1ec;
+    }
+    html {
+        width: 100%;
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .wrapper {
+  height: 320px;
+  width: 654px;
+  margin: 50px auto;
+  border-radius: 7px 7px 7px 7px;
+   position: relative;
+   bottom: 80px;
+  -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+}
+
+.product-img {
+  float: left;
+  height: 220px;
+  width: 327px;
+}
+
+.product-img img {
+  border-radius: 7px 0 0 7px;
+}
+
+.product-info {
+  float: left;
+  height: 320px;
+  width: 327px;
+  border-radius: 0 7px 10px 7px;
+  background-color: #ffffff;
+}
+
+.product-text {
+  height: 300px;
+  width: 327px;
+}
+
+.product-text h1 {
+  margin: 0 0 0 38px;
+  padding-top: 52px;
+  font-size: 34px;
+  color: #474747;
+}
+
+.product-text h1,
+.product-price-btn p {
+  font-family: 'Bentham', serif;
+}
+
+.product-text h2 {
+  margin: 0 0 47px 38px;
+  font-size: 13px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #d2d2d2;
+  letter-spacing: 0.2em;
+}
+
+.product-text p {
+  height: 125px;
+  margin: 0 0 0 38px;
+  font-family: 'Playfair Display', serif;
+  color: #8d8d8d;
+  line-height: 1.7em;
+  font-size: 15px;
+  font-weight: lighter;
+  overflow: hidden;
+}
+
+.product-price-btn {
+  height: 103px;
+  width: 327px;
+  margin-top: 17px;
+  position: relative;
+}
+
+.product-price-btn p {
+  display: inline-block;
+  position: absolute;
+  top: -13px;
+  height: 50px;
+  font-family: 'Trocchi', serif;
+  margin: 0 0 0 38px;
+  font-size: 28px;
+  font-weight: lighter;
+  color: #474747;
+}
+
+span {
+  display: inline-block;
+  font-family: 'Times New Roman', Times, serif;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.product-price-btn button {
+  
+  display: inline-block;
+  height: 50px;
+  width: 176px;
+  margin: 0 40px 0 16px;
+  box-sizing: border-box;
+  border: transparent;
+  border-radius: 60px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: #9cebd5;
+  cursor: pointer;
+  outline: none;
+}
+
+.product-price-btn button:hover {
+  background-color: #79b0a1;
+}
+    .progress-bar {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #f2f2f2;
+  overflow: hidden;
+}
+
+.progress-bar .circle {
+  position: relative;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10%;
+  border: 10px solid #ccc;
+  transform: rotate(-90deg);
+  transform-origin: center;
+
+}
+
+.progress-bar .progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 10px solid #1abc9c;
+  transform: rotate(0deg);
+  transform-origin: center;
+  transition: transform 1s ease-in-out;
+}
+
+#countdown {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.button-container {
+  position: relative;
+}
+.add{
+    position: relative;
+    left: 400px;
+    bottom:80px;
+    
+}
+.skip{
+    position: relative;
+    right: 30px;
+    bottom:138px;
+    padding: 10px;
+}
+.button-container button {
+  margin: 0 10px;
+}
+
+@keyframes colorAnimation {
+  0% {
+    border-color: #1abc9c;
+  }
+  25% {
+    border-color: #f1c40f;
+  }
+  50% {
+    border-color: #e67e22;
+  }
+  75% {
+    border-color: #e74c3c;
+  }
+  100% {
+    border-color: #1abc9c;
+  }
+}
+
+.progress-bar .progress {
+  animation: colorAnimation 4s infinite linear;
+}
+
+  </style>
+  <script src="https://kit.fontawesome.com/fd59437c6c.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
+</head>
+<body>
+    <div id="body">
+        <div style="display: flex;justify-content: center;align-items: center;">
+    <h1 style="margin-bottom: 250px; font-family: 'Times New Roman', Times, serif;">
+      Routine starting in...
+    </h1>
+    <p style="font-family:'Times New Roman', Times, serif;font-size:larger;position: relative;right: 200px;bottom: 60px;" >Subheading Here</p>
+    </div>
+
+  <div class="progress-bar" style="position: relative; bottom: 150px;left: 170px;">
+    <div class="circle"></div>
+    <div class="progress"></div>
+    <div id="countdown">60</div>
+  </div>
+
+  <div class="button-container">
+    <div class="add">
+    <button  style="padding-bottom: 15px; padding-top:15px;padding-right:30px;padding-left:30px;border-radius: 20%;background-color: violet; cursor: pointer;box-shadow: 4px 4px 2px 2px rgba(49, 9, 42, 0.136);"><img src="skip.jpeg" alt="Italian Trulli" style="width: 20px;height: 15px; padding-right:10px;color: black;"><span>Skip</span></span></button>
+    </div>
+    <div class="skip">
+    <button onclick="addTime()" style="padding-left:40px;padding-right:40px;border-radius: 20%;background-color: violet; cursor: pointer;box-shadow: 4px 4px 2px 2px rgba(49, 9, 42, 0.136)"><span><span>+10Seconds</span></span></button>
+    </div>
+  </div>
+  <div>
+  <div class="wrapper">
+    <div class="product-img" style="height:227px;">
+        <h2 style="position:relative;left: 105px; height: 100px;font-family: 'Times New Roman', Times, serif;">Step 2/3</h2>
+      <img src="handwash.jpeg" height="120px" width="227px" style="position: relative;left: 40px;display: flex;align-items: center;justify-content: center;position: relative;top:50px;">
+    </div>
+    <div class="product-info">
+      <div class="product-text">
+        <h3 style="position: relative;left:40px;font-family: 'Times New Roman', Times, serif;color:black;position: relative;top: 110px;">Cleansing</h3>
+        <div style="position: relative;top: 140px;">
+        <span style="position: relative;left: 40px;color: blueviolet;font-weight: 2000;font-size: x-large;"><img src="cir.jpeg" height="15px" width="15px" style="color: blueviolet;"/> sec</span>
+        <span style="position: relative;left: 160px;color: blueviolet;font-weight: 1000;font-size: large;">How to do?</span>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <script>
+ var countdown = 60;
+var progressElement = document.querySelector('.progress');
+var countdownDisplay = document.getElementById("countdown");
+
+function startTimer() {
+  var interval = setInterval(function() {
+    countdown--;
+    countdownDisplay.textContent = countdown;
+
+    if (countdown <= 0) {
+      clearInterval(interval);
+      countdownDisplay.textContent = "Time's up!";
+    }
+
+    updateProgress();
+  }, 1000);
+}
+
+function updateProgress() {
+  var progress = (60 - countdown) / 60;
+  var hue = Math.round(120 * progress); // Calculate the hue value based on progress
+
+  progressElement.style.borderColor = 'hsl(' + hue + ', 100%, 50%)';
+  progressElement.style.transform = "rotate(" + (progress * 360) + "deg)";
+}
+
+function addTime() {
+  countdown += 10;
+  countdownDisplay.textContent = countdown;
+}
+
+startTimer();
+
+  </script>
+</body>
+</html>
+
